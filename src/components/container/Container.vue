@@ -1,5 +1,6 @@
 <template>
-  <div id="container" :ref="refName">
+  <div id="container" :ref="refName" :style="style">
+    <button @click="changeStyle" style="font-size: 200px">change style</button>
     <slot></slot>
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
     const originWidth = ref(0)
     const originHeight = ref(0)
     let context, dom
+    let observer
 
     const init = () => {
       return new Promise(resolve => {
@@ -65,24 +67,54 @@ export default {
       dom.style.transform = `scale(${widthScale}, ${heightScale})`
     }
 
-    const onResize = async () => {
+    const onResize = async (e) => {
+      console.log('onResize', e)
       await init()
       updateScale()
     }
 
+    const initMutationObserver = () => {
+      const MutationObserver = window.MutationObserver
+      observer = new MutationObserver(onResize)
+      observer.observe(dom, {
+        attributes: true,
+        attributeFilter: ['style'],
+        attributeOldValue: true
+      })
+    }
+
+    const removeMutationObserver = () => {
+      if (observer) {
+        observer.disconnect()
+        observer.takeRecords()
+        observer = null
+      }
+    }
     onMounted(async () => {
       context = getCurrentInstance().ctx
       await init()
       updateSize()
       updateScale()
       window.addEventListener('resize', debounce(1000, onResize))
+      initMutationObserver()
     })
 
     onUnmounted(() => {
       window.removeEventListener('resize', debounce(1000, onResize))
+      removeMutationObserver()
     })
+
+    const style = ref({})
+    const changeStyle = () => {
+      style.value = {
+        ...style.value,
+        height: '1000px'
+      }
+    }
     return {
-      refName
+      refName,
+      style,
+      changeStyle
     }
   }
 }
