@@ -7,10 +7,16 @@
       <div class="header">
         <top-header></top-header>
       </div>
-      <div class="separator">222</div>
+      <div class="separator"></div>
       <div class="center">
         <div class="left">
-          <div class="left1">3333</div>
+          <div class="left1">
+            <total-users
+              :today-user="todayUser"
+              :growth-last-month="growthLastMonth"
+              :growth-last-day="growthLastDay">
+            </total-users>
+          </div>
           <div class="left2">3333</div>
           <div class="left3">3333</div>
           <div class="left4">3333</div>
@@ -43,14 +49,17 @@
 import Loading from '@/components/loading/index'
 import Container from '@/components/container/Container'
 import TopHeader from '@/components/TopHeader/index'
-import { ref, onMounted } from 'vue'
+import TotalUsers from '@/components/totalUsers/index'
 
+import { ref, onMounted } from 'vue'
+import useScreenData from '@/hooks/useScreenData'
 export default {
   name: 'Home',
   components: {
     Container,
     Loading,
-    TopHeader
+    TopHeader,
+    TotalUsers
   },
   setup () {
     const load = ref(true)
@@ -62,7 +71,8 @@ export default {
     })
 
     return {
-      load
+      load,
+      ...useScreenData()
     }
   }
 }
@@ -75,6 +85,7 @@ export default {
   background rgb(29, 29, 29)
   color #fff
   font-size 48px
+
   #container {
     display: flex;
     flex-direction: column;
@@ -84,8 +95,12 @@ export default {
       margin-top: 10px;
     }
 
-    .separator-wrapper {
+    .separator {
+      width: 100%;
       height: 10px;
+      background: rgb(92, 88, 89);
+      filter: blur(0px);
+      backdrop-filter: blur(0px);
     }
 
     .center {
