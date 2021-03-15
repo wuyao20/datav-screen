@@ -29,7 +29,9 @@
           <div class="left5">
             <total-rider :data="riderData"></total-rider>
           </div>
-          <div class="left6">3333</div>
+          <div class="left6">
+            <hot-category :data="hotCategory"></hot-category>
+          </div>
         </div>
         <div class="right">
           <div class="right-top1">333</div>
@@ -66,9 +68,11 @@ import 'echarts/lib/chart/bar'
 import TotalDevice from '@/components/TotalDevice/TotalDevice'
 import TotalGender from '@/components/TotalGender/TotalGender'
 import TotalRider from '@/components/TotalRider/TotalRider'
+import HotCategory from '@/components/HotCategory/HotCategory'
 export default {
   name: 'Home',
   components: {
+    HotCategory,
     TotalRider,
     TotalGender,
     TotalDevice,
