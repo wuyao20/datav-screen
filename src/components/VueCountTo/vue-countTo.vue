@@ -5,7 +5,6 @@
 </template>
 <script>
 import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'
-
 export default {
   props: {
     startVal: {
@@ -62,6 +61,7 @@ export default {
       default: true
     }
   },
+
   data () {
     return {
       localStartVal: this.startVal,
@@ -185,9 +185,10 @@ export default {
       }
       return this.prefix + x1 + x2 + this.suffix
     }
-  },
-  destroyed () {
-    cancelAnimationFrame(this.rAF)
   }
+  //
+  // destroyed () {
+  //   cancelAnimationFrame(this.rAF)
+  // }
 }
 </script>

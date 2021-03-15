@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export default {
   name: 'totalUser',
@@ -61,16 +61,25 @@ export default {
     const startVal = ref(0)
     const startPercent = ref(0)
     const startPercent2 = ref(0)
-    const updateStartVal = () => {
-      startVal.value = props.todayUser
-      startPercent.value = props.growthLastDay
-      startPercent2.value = props.growthLastMonth
-    }
+    // const updateStartVal = () => {
+    //   startVal.value = props.todayUser
+    //   startPercent.value = props.growthLastDay
+    //   startPercent2.value = props.growthLastMonth
+    // }
+    watch(() => props.todayUser, (nextValue, prevValue) => {
+      startVal.value = prevValue
+    })
+    watch(() => props.growthLastDay, (nextValue, prevValue) => {
+      startPercent.value = prevValue
+    })
+    watch(() => props.growthLastMonth, (nextValue, prevValue) => {
+      startPercent2.value = prevValue
+    })
     return {
       startVal,
       startPercent,
-      startPercent2,
-      updateStartVal
+      startPercent2
+      // updateStartVal
     }
   }
 }
@@ -80,7 +89,7 @@ export default {
 .total-user {
   width: 100%;
   height: 100%;
-  background: rgb(66, 68, 70);
+  background: rgb(43, 44, 46);
   box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
   padding: 20px 40px;
   box-sizing: border-box;

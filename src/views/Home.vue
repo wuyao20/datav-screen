@@ -17,7 +17,9 @@
               :growth-last-day="growthLastDay">
             </total-users>
           </div>
-          <div class="left2">3333</div>
+          <div class="left2">
+            <average-age :data="ageData" :avgAge="averageAge"></average-age>
+          </div>
           <div class="left3">3333</div>
           <div class="left4">3333</div>
           <div class="left5">3333</div>
@@ -50,16 +52,19 @@ import Loading from '@/components/loading/index'
 import Container from '@/components/container/Container'
 import TopHeader from '@/components/TopHeader/index'
 import TotalUsers from '@/components/totalUsers/index'
+import AverageAge from '@/components/AverageAge/index'
 
 import { ref, onMounted } from 'vue'
 import useScreenData from '@/hooks/useScreenData'
+import 'echarts/lib/chart/bar'
 export default {
   name: 'Home',
   components: {
     Container,
     Loading,
     TopHeader,
-    TotalUsers
+    TotalUsers,
+    AverageAge
   },
   setup () {
     const load = ref(true)
