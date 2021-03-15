@@ -1,10 +1,11 @@
 <template>
-  <div class="echarts">
+  <div :class="[className, 'echarts']">
   </div>
 </template>
 
 <script>
 import { watch, onMounted } from 'vue'
+import { v4 as uuid } from 'uuid'
 import * as Echarts from 'echarts'
 
 export default {
@@ -15,9 +16,11 @@ export default {
   setup (ctx) {
     let dom
     let chart
+    /* eslint-disable */
+    let className = `echarts${uuid()}`
     const initChart = () => {
       if (!chart) {
-        dom = document.getElementsByClassName('echarts')[0]
+        dom = document.getElementsByClassName(className)[0]
         chart = Echarts.init(dom)
       }
       chart.setOption(ctx.options)
@@ -29,6 +32,9 @@ export default {
       initChart()
       chart.setOption(ctx.options)
     })
+    return {
+      className
+    }
   }
 }
 </script>

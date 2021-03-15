@@ -23,8 +23,12 @@
           <div class="left3">
             <total-device :data="deviceData"></total-device>
           </div>
-          <div class="left4">3333</div>
-          <div class="left5">3333</div>
+          <div class="left4">
+            <total-gender :data="genderData"></total-gender>
+          </div>
+          <div class="left5">
+            <total-rider :data="riderData"></total-rider>
+          </div>
           <div class="left6">3333</div>
         </div>
         <div class="right">
@@ -60,9 +64,13 @@ import { ref, onMounted } from 'vue'
 import useScreenData from '@/hooks/useScreenData'
 import 'echarts/lib/chart/bar'
 import TotalDevice from '@/components/TotalDevice/TotalDevice'
+import TotalGender from '@/components/TotalGender/TotalGender'
+import TotalRider from '@/components/TotalRider/TotalRider'
 export default {
   name: 'Home',
   components: {
+    TotalRider,
+    TotalGender,
     TotalDevice,
     Container,
     Loading,
