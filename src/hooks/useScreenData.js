@@ -31,12 +31,30 @@ const random = function (val) {
   return Math.floor(Math.random() * val)
 }
 
+const deviceMockData = {
+  totalDevices: 1070909,
+  devices: [
+    {
+      key: 'Android',
+      value: 423676
+    },
+    {
+      key: 'ios',
+      value: 373581
+    },
+    {
+      key: 'PC',
+      value: 273652
+    }
+  ]
+}
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
   const growthLastMonth = ref(15)
   const ageData = ref(ageMockData)
   const averageAge = ref(28)
+  const deviceData = ref(deviceMockData)
   let task
 
   onMounted(() => {
@@ -51,6 +69,13 @@ export default function () {
         item.value = item.value + random(100)
       })
       ageData.value = _ageData
+
+      const _deviceData = Object.assign({}, deviceData.value)
+      _deviceData.totalDevices = _deviceData.totalDevices + 10
+      _deviceData.devices.forEach(item => {
+        item.value += random(100)
+      })
+      deviceData.value = _deviceData
     }, 3000)
   })
 
@@ -62,6 +87,7 @@ export default function () {
     growthLastDay,
     growthLastMonth,
     ageData,
-    averageAge
+    averageAge,
+    deviceData
   }
 }

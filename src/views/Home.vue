@@ -20,7 +20,9 @@
           <div class="left2">
             <average-age :data="ageData" :avgAge="averageAge"></average-age>
           </div>
-          <div class="left3">3333</div>
+          <div class="left3">
+            <total-device :data="deviceData"></total-device>
+          </div>
           <div class="left4">3333</div>
           <div class="left5">3333</div>
           <div class="left6">3333</div>
@@ -57,9 +59,11 @@ import AverageAge from '@/components/AverageAge/index'
 import { ref, onMounted } from 'vue'
 import useScreenData from '@/hooks/useScreenData'
 import 'echarts/lib/chart/bar'
+import TotalDevice from '@/components/TotalDevice/TotalDevice'
 export default {
   name: 'Home',
   components: {
+    TotalDevice,
     Container,
     Loading,
     TopHeader,

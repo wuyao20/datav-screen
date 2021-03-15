@@ -26,7 +26,6 @@ export default {
       initChart()
     })
     watch(() => ctx.options, () => {
-      console.log('averageData change')
       initChart()
       chart.setOption(ctx.options)
     })
