@@ -34,7 +34,9 @@
           </div>
         </div>
         <div class="right">
-          <div class="right-top1">333</div>
+          <div class="right-top1">
+            <center-header :data="headerData"></center-header>
+          </div>
           <div class="right-top2">333</div>
           <div class="right-bottom">
             <div class="right-left">
@@ -69,9 +71,11 @@ import TotalDevice from '@/components/TotalDevice/TotalDevice'
 import TotalGender from '@/components/TotalGender/TotalGender'
 import TotalRider from '@/components/TotalRider/TotalRider'
 import HotCategory from '@/components/HotCategory/HotCategory'
+import CenterHeader from '@/components/CenterHeader/CenterHeader'
 export default {
   name: 'Home',
   components: {
+    CenterHeader,
     HotCategory,
     TotalRider,
     TotalGender,
