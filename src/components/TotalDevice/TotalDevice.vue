@@ -44,7 +44,7 @@
 import { ref, watch, onMounted } from 'vue'
 import * as Echarts from 'echarts'
 
-const color = ['#FF0000', '#B22222', '#800000']
+const color = ['rgb(176,207,120)', 'rgb(157,195,91)', 'rgb(131,167,72)']
 
 export default {
   name: 'TotalDevice',

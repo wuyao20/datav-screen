@@ -38,20 +38,32 @@
             <center-header :data="headerData"></center-header>
           </div>
           <div class="right-top2">
-            <transform-category :data="['ALL', '新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
+            <transform-category :data="['新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
           </div>
           <div class="right-bottom">
             <div class="right-left">
-              <div class="right-left1">333</div>
+              <div class="right-left1">
+                333
+              </div>
               <div class="right-left2">
-                <transform-category :data="['订单量', '销售额', '用户数', '退单量']"></transform-category>
+                <transform-category
+                  :data="['订单量', '销售额', '用户数', '退单量']"
+                  :color="['rgb(178, 209, 126)', 'rgb(116, 166, 49)']"
+                >
+                </transform-category>
               </div>
               <div class="right-left3">
+                <real-time-order :data="realTimeOrders"></real-time-order>
+              </div>
+              <div class="right-left4">
+                <schedule-view></schedule-view>
               </div>
             </div>
             <div class="right-right">
               <div class="right-right1">333</div>
-              <div class="right-right2">333</div>
+              <div class="right-right2">
+                <sales-rank :data="salesRankData"></sales-rank>
+              </div>
               <div class="right-right3">333</div>
             </div>
           </div>
@@ -78,9 +90,16 @@ import TotalRider from '@/components/TotalRider/TotalRider'
 import HotCategory from '@/components/HotCategory/HotCategory'
 import CenterHeader from '@/components/CenterHeader/CenterHeader'
 import TransformCategory from '@/components/TransformCategory/TransformCategory'
+import RealTimeOrder from '@/components/RealTimeOrder/RealTimeOrder'
+import ScheduleView from '@/components/ScheduleView/ScheduleView'
+import SalesRank from '@/components/SalesRank/SalesRank'
+
 export default {
   name: 'Home',
   components: {
+    SalesRank,
+    ScheduleView,
+    RealTimeOrder,
     TransformCategory,
     CenterHeader,
     HotCategory,

@@ -3,12 +3,21 @@
     <div
       class="category"
       v-for="(item, index) in data" :key="item"
+      @click="onClick(index)"
+      @mouseenter="onMouseEnter(index)"
+      @mouseleave="onMouseLeave(index)"
     >
       <div
         class="selected"
         v-if="index === select"
         :style="{background: color[0]}"
       >
+        {{ item }}
+      </div>
+      <div
+        class="hovered"
+        v-else-if="index === hover"
+        :style="{background: color[1]}">
         {{ item }}
       </div>
       <div v-else>{{ item }}</div>
@@ -32,7 +41,17 @@ export default {
   },
   setup (props) {
     const select = ref(0)
+    const hover = ref(-1)
     let task
+    const onClick = (index) => {
+      select.value = index
+    }
+    const onMouseEnter = (index) => {
+      hover.value = index
+    }
+    const onMouseLeave = () => {
+      hover.value = -1
+    }
     const update = () => {
       task && clearInterval(task)
       task = setInterval(() => {
@@ -48,7 +67,11 @@ export default {
       task && clearInterval(task)
     })
     return {
-      select
+      select,
+      hover,
+      onClick,
+      onMouseEnter,
+      onMouseLeave
     }
   }
 }

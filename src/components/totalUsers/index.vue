@@ -86,11 +86,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "../../stylus/index.styl"
 .total-user {
   width: 100%;
   height: 100%;
-  background: rgb(43, 44, 46);
+  background: rgb(66, 68, 70);
   box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
   padding: 20px 40px;
   box-sizing: border-box;
@@ -119,11 +118,11 @@ export default {
     letter-spacing: 2px;
 
     .percent-text-1 {
-      color: $red3;
+      color: rgb(197, 251, 121);
     }
 
     .percent-text-2 {
-      color: $red1;
+      color: rgb(99, 169, 0);
       margin-left: 10px;
     }
   }

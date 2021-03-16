@@ -57,7 +57,7 @@ export default {
               type: 'shadow'
             }
           },
-          color: ['#DC143C', '#8B0000'],
+          color: ['rgb(209,248,138)', 'rgba(65,65,65,.5)'],
           grid: {
             left: 20,
             right: 0,
