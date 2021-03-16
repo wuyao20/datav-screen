@@ -37,12 +37,17 @@
           <div class="right-top1">
             <center-header :data="headerData"></center-header>
           </div>
-          <div class="right-top2">333</div>
+          <div class="right-top2">
+            <transform-category :data="['ALL', '新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
+          </div>
           <div class="right-bottom">
             <div class="right-left">
               <div class="right-left1">333</div>
-              <div class="right-left2">333</div>
-              <div class="right-left3">333</div>
+              <div class="right-left2">
+                <transform-category :data="['订单量', '销售额', '用户数', '退单量']"></transform-category>
+              </div>
+              <div class="right-left3">
+              </div>
             </div>
             <div class="right-right">
               <div class="right-right1">333</div>
@@ -72,9 +77,11 @@ import TotalGender from '@/components/TotalGender/TotalGender'
 import TotalRider from '@/components/TotalRider/TotalRider'
 import HotCategory from '@/components/HotCategory/HotCategory'
 import CenterHeader from '@/components/CenterHeader/CenterHeader'
+import TransformCategory from '@/components/TransformCategory/TransformCategory'
 export default {
   name: 'Home',
   components: {
+    TransformCategory,
     CenterHeader,
     HotCategory,
     TotalRider,
@@ -187,7 +194,6 @@ export default {
 
         .right-top2 {
           height: 48px;
-          margin-bottom: 20px;
         }
 
         .right-bottom {

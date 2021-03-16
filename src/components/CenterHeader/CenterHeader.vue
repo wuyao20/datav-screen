@@ -72,6 +72,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "../../stylus/index.styl"
 .center-header {
   display: flex;
   align-items: center;
@@ -97,7 +98,7 @@ export default {
           height: 185px;
           background-repeat: no-repeat;
           background-size: 100% 100%;
-          background-color: rgb(131, 167, 72);
+          background-color: $red2;
           border-radius: 50%;
 
           .img {
@@ -106,6 +107,7 @@ export default {
             border-radius: 50%;
             background-repeat: no-repeat;
             background-size: 100% 100%;
+            background-color $red2
           }
         }
       }

@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "../../stylus/index.styl"
 .top-header {
   display: flex;
   align-items: center;
@@ -87,64 +88,6 @@ export default {
     align-items: center;
     justify-content: flex-start;
 
-    /*.unicom {
-      #path1 {
-        fill: none;
-        stroke: #333;
-        stroke-width: 1;
-        animation: logo1 5s linear infinite forwards;
-      }
-
-      #path2 {
-        fill: none;
-        stroke: #333;
-        stroke-width: 1;
-        animation: logo1 5s linear infinite forwards;
-      }
-      #path3 {
-        fill: none;
-        stroke: #333;
-        stroke-width: 1;
-        animation: logo1 5s linear infinite forwards;
-      }
-      @keyframes logo1 {
-        from {
-          fill none
-          stroke-dasharray: 5459;
-          stroke-dashoffset: 5459;
-        }
-        to {
-          fill red
-          stroke-dasharray: 5459;
-          stroke-dashoffset: 0;
-        }
-      }
-      @keyframes logo2 {
-        from {
-          fill none
-          stroke-dasharray: 1569;
-          stroke-dashoffset: 1569;
-        }
-        to {
-          fill red
-          stroke-dasharray: 1569;
-          stroke-dashoffset: 0;
-        }
-      }
-      @keyframes logo3 {
-        from {
-          fill none
-          stroke-dasharray: 1566;
-          stroke-dashoffset: 1566;
-        }
-        to {
-          fill red
-          stroke-dasharray: 1566;
-          stroke-dashoffset: 0;
-        }
-      }
-    }
-*/
     img {
       width: 363px;
       height: 150px;
@@ -162,7 +105,8 @@ export default {
     .time {
       width: 220px;
       font-size: 52px;
-      color: rgb(197, 251, 121);
+      //color: rgb(197, 251, 121);
+      color: $red5
       font-family: DIN;
       font-weight: 500;
       margin-left: 30px;
