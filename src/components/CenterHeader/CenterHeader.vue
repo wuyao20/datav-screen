@@ -60,7 +60,6 @@ export default {
       update()
     })
     watch(() => props.data, () => {
-      console.log('center header data change')
       update()
     })
     return {

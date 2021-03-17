@@ -38,7 +38,7 @@
             <center-header :data="headerData"></center-header>
           </div>
           <div class="right-top2">
-            <transform-category :data="['新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
+            <transform-category :data="['ALL', '新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
           </div>
           <div class="right-bottom">
             <div class="right-left">
@@ -60,11 +60,12 @@
               </div>
             </div>
             <div class="right-right">
-              <div class="right-right1">333</div>
+              <div class="right-right1">
+                <sales-list :data="salesListData"></sales-list>
+              </div>
               <div class="right-right2">
                 <sales-rank :data="salesRankData"></sales-rank>
               </div>
-              <div class="right-right3">333</div>
             </div>
           </div>
         </div>
@@ -93,10 +94,12 @@ import TransformCategory from '@/components/TransformCategory/TransformCategory'
 import RealTimeOrder from '@/components/RealTimeOrder/RealTimeOrder'
 import ScheduleView from '@/components/ScheduleView/ScheduleView'
 import SalesRank from '@/components/SalesRank/SalesRank'
+import SalesList from '@/components/SalesList/SalesList'
 
 export default {
   name: 'Home',
   components: {
+    SalesList,
     SalesRank,
     ScheduleView,
     RealTimeOrder,
@@ -252,6 +255,7 @@ export default {
             .right-left4 {
               height: 220px;
               margin-top: 10px;
+              box-sizing border-box
             }
           }
 

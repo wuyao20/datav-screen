@@ -61,7 +61,6 @@ export default {
         img: 'https://img.alicdn.com/tfs/TB12MbzqYY1gK0jSZTEXXXDQVXa-28-30.png'
       }]
       listData.value = currentData
-      console.log(currentData)
 
       function createOption () {
         const data = []
