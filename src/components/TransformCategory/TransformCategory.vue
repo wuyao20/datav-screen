@@ -60,7 +60,7 @@ export default {
         } else {
           select.value++
         }
-      }, 2000)
+      }, 3000)
     }
     onMounted(update)
     onUnmounted(() => {

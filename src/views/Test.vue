@@ -1,64 +1,90 @@
 <template>
-  <div style="width: 500px;height: 400px;">
-    <base-scroll-list
-      :config="config"
-    />
+  <div style="width: 800px; height: 700px">
+    <vue-echarts :options="options"></vue-echarts>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-import BaseScrollList from '@/components/SalesList/BaseScrollList'
+import { ref, onMounted } from 'vue'
+import { geoJS } from '@/utils/geo'
+import * as ECharts from 'echarts'
+import 'echarts-gl'
+import VueEcharts from '@/components/VueEcharts/VueEcharts'
 
 export default {
-  components: {
-    BaseScrollList
-  },
+  components: { VueEcharts },
   setup () {
-    const config = ref({})
-    const headerData = ['姓名', '年龄', '月薪']
-    const headerStyle = [{ color: 'red' }, { width: '100px' }]
-    const headerFontSize = 24
-    const headerColor = '#fff'
-    const rowFontSize = 20
-    const rowColor = '#000'
-    const rowStyle = [{ color: 'blue' }]
-    const rowBg = ['rgb(200,200,200)', 'rgb(255,255,255)']
-    const aligns = ['center', 'left', 'right']
-    const data = []
-
-    for (let i = 0; i < 10; i++) {
-      data.push([
-        '同学' + (i + 1),
-        Math.floor(Math.random() * 10 + 20),
-        Math.floor(Math.random() * 10000 + 10000)
-      ])
+    const options = ref({})
+    const update = () => {
+      const centers = []
+      geoJS.features.map(item => {
+        if (item.properties) {
+          centers.push({
+            [item.properties.name]: item.properties.center
+          })
+        }
+      })
+      ECharts.registerMap('xuzhou', geoJS)
+      options.value = {
+        geo: [{
+          map: 'xuzhou',
+          zoom: 1,
+          roam: true,
+          scaleLimit: {
+            min: 0,
+            max: 3
+          },
+          itemStyle: {
+            areaColor: '#013c62',
+            shadowColor: '#013c62',
+            shadowBlur: 20,
+            shadowOffsetX: -5,
+            shadowOffsetY: 15
+          }
+        }],
+        series: [{
+          type: 'map',
+          map: 'xuzhou',
+          label: {
+            position: 'insideRight ',
+            show: true,
+            color: '#fff',
+            emphasis: {
+              color: '#fff',
+              show: true
+            }
+          },
+          itemStyle: {
+            normal: {
+              borderColor: '#2980b9',
+              borderWidth: 1,
+              areaColor: '#12235c'
+            },
+            emphasis: {
+              areaColor: '#fa8c16',
+              borderWidth: 0
+            }
+          }
+        }],
+        data: centers.map(centerItem => {
+          const key = Object.keys(centerItem)[0]
+          return {
+            name: key,
+            value: Math.random() * 100
+          }
+        })
+      }
     }
-
-    config.value = {
-      headerData,
-      headerStyle,
-      rowStyle,
-      rowBg,
-      headerBg: 'rgb(80,80,80)',
-      headerHeight: '40',
-      headerIndex: true,
-      data,
-      rowNum: 10,
-      aligns,
-      headerFontSize,
-      rowFontSize,
-      headerColor,
-      rowColor
-    }
-
+    onMounted(() => {
+      update()
+      console.log(geoJS)
+    })
     return {
-      config
+      options
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-
 </style>

@@ -38,12 +38,12 @@
             <center-header :data="headerData"></center-header>
           </div>
           <div class="right-top2">
-            <transform-category :data="['ALL', '新沂', '邳州', '睢宁', '丰县', '沛县', '铜山' ,'贾汪']"></transform-category>
+            <transform-category :data="['新沂', '邳州', '睢宁', '铜山', '贾汪', '丰县' ,'沛县']"></transform-category>
           </div>
           <div class="right-bottom">
             <div class="right-left">
               <div class="right-left1">
-                333
+                <order-map></order-map>
               </div>
               <div class="right-left2">
                 <transform-category
@@ -95,10 +95,12 @@ import RealTimeOrder from '@/components/RealTimeOrder/RealTimeOrder'
 import ScheduleView from '@/components/ScheduleView/ScheduleView'
 import SalesRank from '@/components/SalesRank/SalesRank'
 import SalesList from '@/components/SalesList/SalesList'
+import OrderMap from '@/components/OrderMap/OrderMap'
 
 export default {
   name: 'Home',
   components: {
+    OrderMap,
     SalesList,
     SalesRank,
     ScheduleView,
